@@ -1,0 +1,159 @@
+.nav-container {
+    box-shadow: 0 0 3px 0 gray;
+}
+
+.navbar-left {
+    width: 200px;
+    display: flex;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 40px;
+    float: left;
+}
+
+.nav-img {
+    width: 40px;
+    height: 40px;
+}
+
+.nav-title {
+    line-height: 20px;
+    padding: 3px 15px;
+    transition: 0.4s ease;
+}
+
+.nav-title .book-text {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.nav-title .worm-text {
+    color: #1890ff;
+    font-weight: bold;
+    font-size: 17px;
+    margin-left: 1px;
+}
+
+.nav-title .online-text {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.navbar-right {
+    float: right;
+    padding-top: 28px;
+    padding-right: 40px;
+}
+
+.nav-btn {
+    padding: 10px 20px;
+    margin-left: 40px;
+    text-decoration: none;
+    color: #1890ff;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: #1890ff;
+    border-radius: 5px;
+    color: white;
+    transition: 0.4s ease;
+}
+
+@media screen and (max-width: 980px) {
+    .navbar-left {
+        width: 100%;
+        text-align: center;
+        padding: 20px 0px;
+    }
+
+    .nav-img {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .nav-title {
+        line-height: 20px;
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        transition: 0.4s ease;
+    }
+
+    .nav-title .book-text {
+        font-size: 30px;
+    }
+
+    .nav-title .worm-text {
+        font-size: 30px;
+    }
+
+    .nav-title .online-text {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .navbar-right {
+        float: none;
+        padding: 20px 0px;
+        text-align: center;
+    }
+
+    .nav-btn {
+        padding: 10px 20px;
+        margin-left: 20px;
+        transition: 0.4s ease;
+    }
+
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .navbar-left {
+        width: 100%;
+        text-align: center;
+        padding: 20px 0px;
+    }
+
+    .nav-img {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .nav-title {
+        line-height: 20px;
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        transition: 0.4s ease;
+    }
+
+    .nav-title .book-text {
+        font-size: 25px;
+    }
+
+    .nav-title .worm-text {
+        font-size: 25px;
+    }
+
+    .nav-title .online-text {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .navbar-right {
+        float: none;
+        padding: 20px 0px;
+        text-align: center;
+    }
+
+    .nav-btn {
+        padding: 10px 20px;
+        margin-left: 3px;
+        transition: 0.4s ease;
+        font-size: 14px;
+    }
+
+}
