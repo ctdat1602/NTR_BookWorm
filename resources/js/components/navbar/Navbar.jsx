@@ -5,8 +5,8 @@ import { Container, Row, Col } from 'react-grid-system';
 import './navbar.css'
 import logo from '../../../assets/bookcover/logo.png'
 
-class Navbar extends Component {
-    render() {
+const Navbar = () => {
+
         return (
             <Container fluid style={{padding : 0}} className="nav-container">
                 <Row style={{margin: 0}}>
@@ -26,13 +26,12 @@ class Navbar extends Component {
                             <NavLink className='nav-btn' to={'/shop'}>SHOP</NavLink>
                             <NavLink className='nav-btn' to={'/cart'}>CART</NavLink>
                             <NavLink className='nav-btn' to={'/about'}>ABOUT</NavLink>
-                            <NavLink className='nav-btn' to={'/home'}>SIGN IN</NavLink>
+                            <NavLink className='nav-btn' to={'/logout'}>SIGN IN</NavLink>
                         </div>
                     </Col>
                 </Row>
             </Container>
         );
-    }
 }
 
 export default Navbar;

@@ -1,0 +1,137 @@
+.main {
+    min-height: 75vh;
+}
+
+.title {
+    padding: 0 40px;
+    margin-top: 20px;
+}
+
+.title h1 {
+    color: #52575D;
+}
+
+.card-product {
+    padding: 0 40px;
+}
+
+.item-card {
+    display: flex;
+    padding: 30px;
+    box-shadow: 0 0 3px 1px #E3E7F1;;
+    border-radius: 5px;
+}
+
+.item-card img {
+    width: 300px;
+    height: 300px;
+}
+
+.book-author {
+    font-size: 15px;
+    margin-top: 20px;
+    font-weight: bold;
+    float: right;
+}
+
+.infor-card {
+    margin-left: 40px;
+}
+
+.infor-card .book-name {
+    font-size: 40px;
+    line-height: 45px;
+    font-weight: bold;
+}
+
+.infor-card .book-name span{
+    color: #1890ff;
+}
+
+.infor-card .book-summary{
+    font-size: 20px;
+    margin-top: 10px;
+    line-height: 40px;
+}
+
+.item-card-controller {
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 0 3px 1px #E3E7F1;;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.item-card-controller .box-price {
+    background-color: rgba(245, 245, 245);
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.box-price .book-price{
+    font-size: 30px;
+    font-weight: bold;
+    color: #ff4d4d;
+    margin-left: 10px    
+}
+
+.box-price .sale {
+    font-size: 16px;
+    font-weight: bold;
+    color: #C9D1D3;
+}
+
+.box-price .discount-price {
+    font-size: 25px;
+    font-weight: bold;
+    color: #ff4d4d;
+    margin-left: 10px;
+}
+
+.item-card-controller .box-quantity {
+    height: 190px;
+    display: flex;
+    padding: 70px 0px;
+}
+
+.box-quantity .quantity-number {
+    width: 80%;
+    background-color: #f7f7f7;
+    padding: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.box-quantity .btn-decrement {
+    width: 10%;
+    height: 50px;
+    border-radius: 5px;
+    border-width: 0;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: #f7f7f7;
+}
+
+.box-quantity .btn-increment {
+    width: 10%;
+    height: 50px;
+    border-radius: 10px;
+    border-width: 0;
+    font-size: 20px;
+    background-color: #f7f7f7;
+}
+
+.item-card-controller .add-to-cart{
+    width: 100%;
+    border-radius: 5px;
+    border-width: 0;
+    background-color: #1890ff;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin: 0;
+}

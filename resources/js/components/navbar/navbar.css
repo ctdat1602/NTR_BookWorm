@@ -3,7 +3,7 @@
 }
 
 .navbar-left {
-    width: 200px;
+    width: 250px;
     display: flex;
     padding-top: 13px;
     padding-bottom: 13px;
@@ -151,9 +151,9 @@
 
     .nav-btn {
         padding: 10px 20px;
-        margin-left: 3px;
+        margin-left: 2px;
         transition: 0.4s ease;
-        font-size: 14px;
+        font-size: 12px;
     }
 
 }

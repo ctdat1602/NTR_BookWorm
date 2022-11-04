@@ -6,8 +6,10 @@ import Home from './components/Home/Home';
 import Cart from './components/Cart/Cart';
 import About from './components/About/About';
 
-class app extends Component {
-    render() {
+import './App.css';
+
+function App () {
+
         return (
             <Routes>
                 <Route path="/home" element={<Home />}></Route>
@@ -17,7 +19,7 @@ class app extends Component {
                 <Route path='/about' element={<About />}></Route>
             </Routes>
         );
-    }
+    
 }
 
-export default app;
+export default App;

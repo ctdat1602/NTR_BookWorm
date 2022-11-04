@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 import Navbar from './components/navbar/Navbar';
-import App from './app';
+import App from './App';
 import '../css/app.css';
 
 class Welcome extends Component {

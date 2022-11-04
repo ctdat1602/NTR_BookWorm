@@ -2,6 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\BookController;
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\AuthorController;
+use App\Http\Controllers\Api\ReviewController;
+use App\Http\Controllers\Api\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +22,18 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/books', [BookController::class, 'index']);
+Route::get('/books/{id}', [BookController::class, 'show']);
+Route::get('/sales', [BookController::class, 'sale']);
+Route::get('/reviews/{id}', [ReviewController::class, 'getReview']);
+Route::get('/sortLowToHigh', [BookController::class, 'sortLowToHigh']);
+Route::get('/sortHighToLow', [BookController::class, 'sortHighToLow']);
+Route::get('/sortRecommended', [BookController::class, 'sortRecommended']);
+Route::get('/sortPopular', [BookController::class, 'sortPopular']);
+
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories/{id}', [CategoryController::class, 'show']);
+
+Route::get('/authors', [AuthorController::class, 'index']);
+Route::get('/authors/{id}', [AuthorController::class, 'show']);

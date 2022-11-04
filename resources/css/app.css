@@ -33,3 +33,7 @@ main {
     margin-left: 6px;
     margin-bottom: 1px;
 }
+
+.nav-link {
+    color: #f75454;
+}
