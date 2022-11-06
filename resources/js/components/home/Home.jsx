@@ -135,7 +135,7 @@ const Home = () => {
                     <Col className='home-box-sale'>
                         <Slider {...settings}>
                             {books.map(book => (
-                                <Link to={`/detail/${book.book_title}`} key={book.id} className='link'>
+                                <Link to={`/detail/${book.id}`} key={book.id} className='link'>
                                     <div className='item-book'>
                                         <div>
                                             {book.book_cover_photo === 'book1' && <img src={book1} alt="" />}
@@ -178,7 +178,7 @@ const Home = () => {
                 <Row>
                     <Col className='home-box-featured' style={{ padding: 35 }}>
                         {featured.map(book => (
-                            <Link to={`/detail/${book.book_title}`} key={book.id} className='link'>
+                            <Link to={`/detail/${book.id}`} key={book.id} className='link'>
                                 <div className='item-book'>
                                     <div>
                                         {book.book_cover_photo === 'book1' && <img src={book1} alt="" />}

@@ -4,6 +4,9 @@ import { Container, Row, Col } from 'react-grid-system'
 import { useParams, Link } from 'react-router-dom';
 import { API } from '../api/Api';
 import './detail.css'
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import { Pagination } from 'antd';
 
 import book1 from '../../../../resources/assets/bookcover/book1.jpg';
 import book2 from '../../../../resources/assets/bookcover/book2.jpg';
@@ -24,6 +27,19 @@ const Detail = () => {
   const [quantity, setQuantity] = useState(1);
   const { id } = useParams();
 
+  const [total, setTotal] = useState("");
+
+  const [postPerPage, setPostPerPage] = useState(5);
+  const [page, setPage] = useState(1);
+
+  const lastPage = page * postPerPage;
+  const firstPage = lastPage - postPerPage;
+  const currentPost = reviews.slice(firstPage, lastPage);
+
+  const onShowSizeChange = (current, size) => {
+    setPostPerPage(size)
+  }
+
   useEffect(() => {
     const fetchBook = async () => {
       const res = await axios.get(`${API}/books/${id}`);
@@ -34,11 +50,30 @@ const Detail = () => {
 
   useEffect(() => {
     const fetchReviews = async () => {
-      const res = await axios.get(`${API}/reviews/${id}`)
+      const res = await axios.get(`${API}/getByNew/${id}`)
       setReviews(res.data);
+      setTotal(res.data.length);
     }
     fetchReviews();
   }, [])
+
+  const filterNews = async () => {
+    const fetchNews = async () => {
+      const res = await axios.get(`${API}/getByNew/${id}`);
+      setReviews(res.data);
+      setTotal(res.data.length);
+    }
+    fetchNews();
+  }
+
+  const filterOlds = async () => {
+    const fetchOlds = async () => {
+      const res = await axios.get(`${API}/getByOld/${id}`);
+      setReviews(res.data);
+      setTotal(res.data.length);
+    }
+    fetchOlds();
+  }
 
   const handleDecrement = () => {
     if (quantity > 1) {
@@ -51,12 +86,12 @@ const Detail = () => {
   }
 
   return (
-    <Container style={{padding : 100, paddingTop : 0}} fluid>
-      <Row className='title'  style={{padding : 0}}>
-        <Col><h1>{bookDetail.category_name}</h1></Col>
+    <Container style={{ padding: 50, paddingTop: 0 }} fluid>
+      <Row className='title' style={{ padding: 0 }}>
+        <Col style={{ padding: 0 }}><h1>{bookDetail.category_name}</h1></Col>
       </Row>
       <Row>
-        <Col xl={9}>
+        <Col xl={9} style={{ padding: 0 }}>
           <div className='item-card'>
             <div>
               {bookDetail.book_cover_photo === 'book1' && <img src={book1} alt="" />}
@@ -78,10 +113,6 @@ const Detail = () => {
                 <div><span>Books Description:</span></div>
                 <span>{bookDetail.book_summary}</span></div>
             </div>
-          </div>
-
-          <div className='item-review'>
-
           </div>
         </Col>
         <Col className='item-card-controller'>
@@ -106,13 +137,87 @@ const Detail = () => {
       </Row>
 
       <Row>
-        <div>
-          {reviews.map(review => (
-            <div  key={review.id}>
-              <p>{review.review_title}</p>
+        <Col xl={9} style={{ padding: 0 }}>
+          <div className='item-review'>
+            <div>
+              <span className='review-title'>Customer Reviews</span>
             </div>
-          ))}
-        </div>
+            <div>
+              <span className='start-title'>{Math.round(bookDetail.average * 10) / 10} Start</span>
+            </div>
+            <div>
+              <Link className='start-total'>{bookDetail.most}</Link>
+              <Link className='start-total'>5 Start ()</Link>
+              <Link className='start-total'>4 Start ()</Link>
+              <Link className='start-total'>3 Start ()</Link>
+              <Link className='start-total'>2 Start ()</Link>
+              <Link className='start-total'>1 Start ()</Link></div>
+            <div>
+              <Row>
+                <Col style={{ marginTop: 10, }}><span className='showing'>Showing {firstPage + 1}-{lastPage} of {total} reviews</span>
+                </Col>
+                <Col>
+                  <DropdownButton id="dropdown-basic-button" title='Sort By Date' className='btn-drop-down'>
+                    <Dropdown.Item to={``} onClick={() => filterNews()}>Sort by date: newsest to oldest</Dropdown.Item>
+                    <Dropdown.Item to={``} onClick={() => filterOlds()}>Sort by date: oldest to newest</Dropdown.Item>
+                  </DropdownButton>
+                </Col>
+              </Row>
+              <div>
+
+                <hr />
+                {currentPost.map(review => (
+                  <div key={review.id} className='box-reviews'>
+                    <div>
+                      <span className='review_title'>{review.review_title}</span>
+                      <span>| {review.rating_start} Start</span>
+                    </div>
+                    <div style={{ marginBottom: 20, marginTop: 20 }}><span>{review.review_details}</span></div>
+                    <div><span className='review_date'>{review.review_date}</span></div>
+                    <hr />
+                  </div>
+                ))}
+                <Pagination
+                  onChange={(page) => setPage(page)}
+                  pageSizeOptions={[5, 15, 20, 25]}
+                  total={total}
+                  current={page}
+                  pageSize={postPerPage}
+                  onShowSizeChange={onShowSizeChange}
+                />
+              </div>
+            </div>
+          </div>
+        </Col>
+
+
+        <Col style={{ padding: 0 }}>
+          <div className='item-form'>
+            <div>
+              <span className='review-title'>Write a Reviews</span>
+            </div>
+            <div style={{marginTop: 20}}>
+              <span className='title-write-review'>Add a tittle</span>
+              <input className='input'></input>
+            </div>
+
+            <div style={{marginTop: 20}}>
+              <span className='title-write-review'>Details please! Your review helps other shoppers.</span>
+              <textarea className='text-area'></textarea>
+            </div>
+
+            <div style={{marginTop: 20}}>
+              <span className='title-write-review'>Select a rating start</span>
+              <input className='input' type='number' min={1} max={5}></input>
+            </div>
+
+            <div style={{marginTop: 20}}>
+              <Link>
+                <p className='up-review'>SUBMIT REVIEW</p>
+              </Link>
+            </div>
+          </div>
+        </Col>
       </Row>
     </Container>
   )

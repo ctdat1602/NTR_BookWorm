@@ -1,33 +1,39 @@
 .row {
     padding-left: 100px;
     padding-right: 100px;
+    transition: 0.5s ease-in-out;
 }
 
 .col-welcome {
     margin-top: 40px;
     margin-bottom: 40px;
     text-align: center;
+    transition: 0.5s ease-in-out;
 }
 
 .text-welcome {
     font-size: 40px;
     font-weight: bold;
+    transition: 0.5s ease-in-out;
 }
 
 .col-welcome-des {
     font-size: 25px;
     margin-bottom: 20px;
+    transition: 0.5s ease-in-out;
 }
 
 .col-our {
     font-size: 30px;
     margin-bottom: 10px;
     font-weight: bold;
+    transition: 0.5s ease-in-out;
 }
 
 .detail {
     font-size: 20px;
     font-weight: 100;
+    transition: 0.5s ease-in-out;
 }
 
 @media screen and (max-width: 950px) {

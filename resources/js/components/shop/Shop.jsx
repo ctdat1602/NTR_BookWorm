@@ -188,7 +188,7 @@ const Shop = () => {
                                 <span className='total-title'>Showing {firstPage + 1}-{lastPage} of {total} books</span>
                                 </Col>
                             <Col>
-                                <DropdownButton id="dropdown-basic-button" title="Dropdown button" className='btn-drop-down'>
+                                <DropdownButton id="dropdown-basic-button" title="Sort by sale" className='btn-drop-down'>
                                     <Dropdown.Item onClick={() => sortSale()}>Sort by sale</Dropdown.Item>
                                     <Dropdown.Item to={`?sort-by-popular`} onClick={() => sortPopular()}>Sort by popular</Dropdown.Item>
                                     <Dropdown.Item to={`?sort-by-low`} onClick={() => sortLow()}>Sort by price : Low to High</Dropdown.Item>

@@ -11,18 +11,22 @@
     box-shadow: 0 0 6px 0px #DDDDDD;
     border: 0;
     background-color: white;
+    transition: 0.5s ease-in-out;
 }
 
 .magrin {
     margin-left: 50px;
+    transition: 0.5s ease-in-out;
 }
 
 .box-total-title {
     padding-top: 20px;
+    transition: 0.5s ease-in-out;
 }
 
 .btn-drop-down {
     float: right;
+    transition: 0.5s ease-in-out;
 }
 
 .shop-box-products {
@@ -30,6 +34,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     margin-top: 20px;
+    transition: 0.5s ease-in-out;
 }
 
 .shop-box-products .item-book {
@@ -38,6 +43,7 @@
     box-sizing: border-box;
     box-shadow: 0 0 6px 1px #DDDDDD;
     border-radius: 5px;
+    transition: 0.5s ease-in-out;
 }
 
 .shop-box-products .item-book img {

@@ -29,7 +29,8 @@ Route::get('/getByRecommended', [BookController::class, 'getByRecommended']);
 Route::get('/getByPopular', [BookController::class, 'getByPopular']);
 
 Route::get('/sales', [BookController::class, 'sale']);
-Route::get('/reviews/{id}', [ReviewController::class, 'getReview']);
+Route::get('/getByNew/{id}', [ReviewController::class, 'getReviewByNewsest']);
+Route::get('/getByOld/{id}', [ReviewController::class, 'getReviewByOldset']);
 
 Route::get('/sortLowToHigh', [BookController::class, 'sortLowToHigh']);
 Route::get('/sortHighToLow', [BookController::class, 'sortHighToLow']);

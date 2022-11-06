@@ -18,10 +18,20 @@ class Review extends Model
         return $this->belongsTo(Book::class);
     }
 
-    public function getReviewById($id) {
+    public function getReviewByNewsest($id) {
         $book = Book::find($id);
         $reviews = Review::where('book_id', $id) 
         ->select('review.id', 'review_title', 'review_details', 'review_date', 'rating_start')
+        ->orderBy('review_date', 'desc')
+        ->get();
+        return $reviews;
+    }
+
+    public function getReviewByOldset($id) {
+        $book = Book::find($id);
+        $reviews = Review::where('book_id', $id) 
+        ->select('review.id', 'review_title', 'review_details', 'review_date', 'rating_start')
+        ->orderBy('review_date', 'asc')
         ->get();
         return $reviews;
     }

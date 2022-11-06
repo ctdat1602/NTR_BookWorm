@@ -88,11 +88,12 @@ class Book extends Model
     public function getBookById($id) {
         $book = DB::table('book')
         ->where('book.id', $id)
+        ->select(DB::raw('avg(rating_start) as average'), DB::raw('count(rating_start) as most'), 'book.id', 'book_title', 'book_price','book_cover_photo','book_summary', 'discount_price', 'author_name', 'category_name')
         ->leftJoin('discount', 'book.id', '=', 'discount.book_id')
         ->leftJoin('review', 'book.id', '=', 'review.book_id')
         ->join('author', 'author.id', '=', 'book.author_id')
         ->join('category', 'category.id', '=', 'book.category_id')
-        ->select('book.id', 'book_title', 'book_price','book_cover_photo','book_summary', 'discount_price', 'author_name', 'category_name')
+        ->groupBy('book.id', 'discount.id', 'author.id', 'category.id')
         ->first();
         return $book;
     }
