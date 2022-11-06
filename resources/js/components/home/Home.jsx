@@ -90,7 +90,7 @@ const Home = () => {
 
     const filterPopular = async () => {
         const fetchPopular = async () => {
-            const res = await axios.get(`${API}/sortPopular`);
+            const res = await axios.get(`${API}/getByPopular`);
             setFeatured(res.data);
         }
         fetchPopular();
@@ -98,12 +98,11 @@ const Home = () => {
 
     const filterRecommended = async () => {
         const fetchRecommended = async () => {
-            const res = await axios.get(`${API}/sortRecommended`);
+            const res = await axios.get(`${API}/getByRecommended`);
             setFeatured(res.data);
         }
         fetchRecommended();
     }
-
 
     useEffect(() => {
         const fetchBooks = async () => {
@@ -115,7 +114,7 @@ const Home = () => {
 
     useEffect(() => {
         const fetchRecommended = async () => {
-            const res = await axios.get(`${API}/sortRecommended`);
+            const res = await axios.get(`${API}/getByRecommended`);
             setFeatured(res.data);
         }
         fetchRecommended();
@@ -129,7 +128,7 @@ const Home = () => {
                         <h1 className='home-title-sale'>Top Sale</h1>
                     </Col>
                     <Col style={{ padding: 0 }}>
-                        <Link to={'shop'} className='btn-view-all'>View All</Link>
+                        <Link to={'/shop'} className='btn-view-all'>View All</Link>
                     </Col>
                 </Row>
                 <Row style={{ margin: 0 }}>

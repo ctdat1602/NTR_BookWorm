@@ -52,7 +52,7 @@ const Detail = () => {
 
   return (
     <Container style={{padding : 100, paddingTop : 0}} fluid>
-      <Row className='title'>
+      <Row className='title'  style={{padding : 0}}>
         <Col><h1>{bookDetail.category_name}</h1></Col>
       </Row>
       <Row>

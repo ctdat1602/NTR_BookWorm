@@ -59,6 +59,32 @@ class Book extends Model
         return $books;
     }
 
+    public function getByPopular() {
+        $books = DB::table('book')
+        ->select(DB::raw('count(rating_start) as most'),'book.id', 'book_title', 'book_price', 'book_cover_photo', 'discount_price', 'author_name')
+        ->leftJoin('author', 'author.id', '=', 'book.author_id')
+        ->join('review', 'book.id', '=', 'review.book_id')
+        ->join('discount', 'book.id', '=', 'discount.book_id')
+        ->orderBy('most', 'desc')
+        ->groupBy('book.id', 'discount.id', 'author.id')
+        ->take(8)
+        ->get();
+        return $books;
+    }
+
+    public function getByRecommended() {
+        $books = DB::table('book')
+        ->select(DB::raw('avg(rating_start) as average'),'book.id', 'book_title', 'book_price', 'book_cover_photo', 'discount_price', 'author_name')
+        ->leftJoin('author', 'author.id', '=', 'book.author_id')
+        ->join('review', 'book.id', '=', 'review.book_id')
+        ->join('discount', 'book.id', '=', 'discount.book_id')
+        ->orderBy('average', 'desc')
+        ->groupBy('book.id', 'discount.id', 'author.id')
+        ->take(8)
+        ->get();
+        return $books;
+    }
+
     public function getBookById($id) {
         $book = DB::table('book')
         ->where('book.id', $id)
@@ -97,7 +123,7 @@ class Book extends Model
         end desc')
         ->get();
         return $books;
-    }
+    } 
 
     public function sortPopular() {
         $books = DB::table('book')
@@ -107,25 +133,8 @@ class Book extends Model
         ->join('discount', 'book.id', '=', 'discount.book_id')
         ->orderBy('most', 'desc')
         ->groupBy('book.id', 'discount.id', 'author.id')
-        ->take(8)
         ->get();
         return $books;
     }
-
-
-    public function sortRecommended() {
-        $books = DB::table('book')
-        ->select(DB::raw('avg(rating_start) as average'),'book.id', 'book_title', 'book_price', 'book_cover_photo', 'discount_price', 'author_name')
-        ->leftJoin('author', 'author.id', '=', 'book.author_id')
-        ->join('review', 'book.id', '=', 'review.book_id')
-        ->join('discount', 'book.id', '=', 'discount.book_id')
-        ->orderBy('average', 'desc')
-        ->groupBy('book.id', 'discount.id', 'author.id')
-        ->take(8)
-        ->get();
-        return $books;
-    }
-
-    
 
 }

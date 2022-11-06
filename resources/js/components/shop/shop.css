@@ -1,9 +1,12 @@
 @import 'antd/dist/antd.css';
 
 
+.filter-title {
+    font-size: 20px;
+}
 
 .shop-collapse .box-collapse {
-    margin-bottom: 10px;
+    margin-top: 18px;
     border-radius: 5px;
     box-shadow: 0 0 6px 0px #DDDDDD;
     border: 0;
@@ -14,10 +17,19 @@
     margin-left: 50px;
 }
 
+.box-total-title {
+    padding-top: 20px;
+}
+
+.btn-drop-down {
+    float: right;
+}
+
 .shop-box-products {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
+    margin-top: 20px;
 }
 
 .shop-box-products .item-book {
@@ -63,10 +75,11 @@
     color: #F05454;
 }
 
-.btn-drop-down {
-    float: right;
-    padding: 10px 20px;
+.paginate {
+    margin-top: 50px;
+    text-align: center;
 }
+
 
 @media screen and (max-width: 1500px) {
 
@@ -94,6 +107,14 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
+    }
+
+    .box-total-title {
+        padding-top: 40px; 
+    }
+    
+    .btn-drop-down {
+        margin-top: 20px;
     }
 
 }
@@ -128,6 +149,10 @@
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         gap: 30px;
+    }
+
+    .total-title {
+        font-size: 14px;
     }
 
 }

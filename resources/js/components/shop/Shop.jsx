@@ -8,6 +8,8 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 
 import { API } from '../api/Api'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './shop.css'
 
 import book1 from '../../../../resources/assets/bookcover/book1.jpg';
@@ -21,8 +23,10 @@ import book8 from '../../../../resources/assets/bookcover/book8.jpg';
 import book9 from '../../../../resources/assets/bookcover/book9.jpg';
 import book10 from '../../../../resources/assets/bookcover/book10.jpg';
 import book11 from '../../../../resources/assets/bookcover/book11.jpg';
+import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 
 const { Panel } = Collapse;
+
 
 
 const Shop = () => {
@@ -34,10 +38,10 @@ const Shop = () => {
     const [books, setBooks] = useState([]);
     const [total, setTotal] = useState("");
 
-    const [postPerPage, setPostPerPage] = useState(5);
+    const [postPerPage, setPostPerPage] = useState(20);
     const [page, setPage] = useState(1);
 
-    const lastPage = page + postPerPage;
+    const lastPage = page * postPerPage;
     const firstPage = lastPage - postPerPage;
     const currentPost = books.slice(firstPage, lastPage);
 
@@ -115,6 +119,15 @@ const Shop = () => {
         fetchSale();
     }
 
+    const sortPopular = async () => {
+        const fetchPopular = async () => {
+            const res = await axios.get(`${API}/sortPopular`);
+            setBooks(res.data);
+            setTotal(res.data.length);
+        }
+        fetchPopular();
+    }
+
 
     return (
         <Container fluid style={{ padding: 50 }}>
@@ -123,7 +136,11 @@ const Shop = () => {
             </Row>
             <Row>
                 <Col xl={2.2} style={{ padding: 0, marginRight: 10 }}>
-                    <p>Filter</p>
+                    <Row>
+                        <Col style={{paddingTop: 15}}>
+                            <span className='filter-title'>Filter</span>
+                        </Col>
+                    </Row>
 
                     <div className='shop-collapse'>
                         <Collapse className='box-collapse'>
@@ -167,10 +184,13 @@ const Shop = () => {
                 <Col style={{ padding: 0 }}>
                     <div className='magrin'>
                         <Row>
-                            <Col debug><div><span>Showing {firstPage}-{lastPage} of {total} books</span></div></Col>
-                            <Col debug>
+                            <Col className='box-total-title'>
+                                <span className='total-title'>Showing {firstPage + 1}-{lastPage} of {total} books</span>
+                                </Col>
+                            <Col>
                                 <DropdownButton id="dropdown-basic-button" title="Dropdown button" className='btn-drop-down'>
                                     <Dropdown.Item onClick={() => sortSale()}>Sort by sale</Dropdown.Item>
+                                    <Dropdown.Item to={`?sort-by-popular`} onClick={() => sortPopular()}>Sort by popular</Dropdown.Item>
                                     <Dropdown.Item to={`?sort-by-low`} onClick={() => sortLow()}>Sort by price : Low to High</Dropdown.Item>
                                     <Dropdown.Item to={`?sort-by-high`} onClick={() => sortHigh()}>Sort by price : Hight to low</Dropdown.Item>
                                 </DropdownButton>
@@ -208,12 +228,12 @@ const Shop = () => {
                         </div>
                         <div className='paginate'>
                             <Pagination
-                                onChange={(current) => setPage(current)}
-                                total={total}
+                                onChange={(page) => setPage(page)}
                                 pageSizeOptions={[5, 15, 20, 25]}
+                                total={total}
+                                current={page}
                                 pageSize={postPerPage}
                                 onShowSizeChange={onShowSizeChange}
-                                current={page}
                             />
                         </div>
                     </div>

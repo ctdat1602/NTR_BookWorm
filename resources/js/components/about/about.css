@@ -1,0 +1,55 @@
+.row {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.col-welcome {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.text-welcome {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.col-welcome-des {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.col-our {
+    font-size: 30px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.detail {
+    font-size: 20px;
+    font-weight: 100;
+}
+
+@media screen and (max-width: 950px) {
+
+    .row {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .col-welcome {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: start;
+    }
+
+    .text-welcome {
+        font-size: 30px;
+    }
+
+    .col-welcome-des {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+}

@@ -25,11 +25,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/books', [BookController::class, 'index']);
 Route::get('/books/{id}', [BookController::class, 'show']);
+Route::get('/getByRecommended', [BookController::class, 'getByRecommended']);
+Route::get('/getByPopular', [BookController::class, 'getByPopular']);
+
 Route::get('/sales', [BookController::class, 'sale']);
 Route::get('/reviews/{id}', [ReviewController::class, 'getReview']);
+
 Route::get('/sortLowToHigh', [BookController::class, 'sortLowToHigh']);
 Route::get('/sortHighToLow', [BookController::class, 'sortHighToLow']);
-Route::get('/sortRecommended', [BookController::class, 'sortRecommended']);
 Route::get('/sortPopular', [BookController::class, 'sortPopular']);
 
 Route::get('/categories', [CategoryController::class, 'index']);

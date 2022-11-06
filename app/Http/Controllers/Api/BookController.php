@@ -37,6 +37,15 @@ class BookController extends Controller
         return $books_sale;
     }
 
+    public function sortPopular()
+    {
+        $books = new Book();
+        
+        $sortPopular = $books->sortPopular();
+        
+        return $sortPopular;
+    }
+
     public function sortLowToHigh()
     {
         $books = new Book();
@@ -55,22 +64,22 @@ class BookController extends Controller
         return $sortHighToLow;
     }
 
-    public function sortPopular()
+    public function getByPopular()
     {
         $books = new Book();
         
-        $sortPopular = $books->sortPopular();
+        $getByPopular = $books->getByPopular();
         
-        return $sortPopular;
+        return $getByPopular;
     }
 
-    public function sortRecommended()
+    public function getByRecommended()
     {
         $books = new Book();
         
-        $sortRecommended = $books->sortRecommended();
+        $getByRecommended = $books->getByRecommended();
         
-        return $sortRecommended;
+        return $getByRecommended;
     }
 
 }
