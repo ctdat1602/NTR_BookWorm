@@ -24,6 +24,7 @@
     border-radius: 5px;
     font-weight: bold;
     background-color: #DDDDDD;
+    color: white;
 }
 
 .home-box-sale {
@@ -90,6 +91,7 @@
     border-radius: 5px;
     font-weight: bold;
     background-color: #DDDDDD;
+    color: white;
 }
 
 .btn-featured-right {
@@ -101,6 +103,7 @@
     font-weight: bold;
     text-align: center;
     background-color: #DDDDDD;
+    color: white;
 }
 
 .home-box-featured {
@@ -160,6 +163,20 @@
     font-weight: bold;
     color: #F05454;
     margin-left: 8px;
+}
+
+.btn-view-all:hover {
+    background-color: #1890ff;
+    color: white;
+}
+.btn-featured-left:hover {
+    background-color: #1890ff;
+    color: white;
+}
+
+.btn-featured-right:hover {
+    background-color: #1890ff;
+    color: white;
 }
 
 @media screen and (max-width: 1600px) {

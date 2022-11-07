@@ -44,6 +44,7 @@ const Detail = () => {
     const fetchBook = async () => {
       const res = await axios.get(`${API}/books/${id}`);
       setBookDetail(res.data);
+      console.log(res.data);
     }
     fetchBook();
   }, []);

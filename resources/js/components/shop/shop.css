@@ -87,6 +87,12 @@
 }
 
 
+.shop-filter-name:hover {
+    background-color: #1890ff;
+    padding-left: 20px;
+    border-radius: 5px;
+}
+
 @media screen and (max-width: 1500px) {
 
     .shop-box-products {

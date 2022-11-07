@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import Navbar from './components/navbar/Navbar';
 import App from './App';
+import Footer from './components/footer/Footer';
 import '../css/app.css';
 
 class Welcome extends Component {
@@ -11,6 +12,7 @@ class Welcome extends Component {
             <BrowserRouter>
                 <Navbar></Navbar>
                 <App></App>
+                <Footer></Footer>
             </BrowserRouter>
         );
     }
