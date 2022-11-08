@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-grid-system';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Slider from "react-slick";
 import axios from 'axios';
@@ -9,17 +9,8 @@ import { API } from '../api/Api'
 
 import './home.css';
 
-import book1 from '../../../../resources/assets/bookcover/book1.jpg';
-import book2 from '../../../../resources/assets/bookcover/book2.jpg';
-import book3 from '../../../../resources/assets/bookcover/book3.jpg';
-import book4 from '../../../../resources/assets/bookcover/book4.jpg';
-import book5 from '../../../../resources/assets/bookcover/book5.jpg';
-import book6 from '../../../../resources/assets/bookcover/book6.jpg';
-import book7 from '../../../../resources/assets/bookcover/book7.jpg';
-import book8 from '../../../../resources/assets/bookcover/book8.jpg';
-import book9 from '../../../../resources/assets/bookcover/book9.jpg';
-import book10 from '../../../../resources/assets/bookcover/book10.jpg';
-import book11 from '../../../../resources/assets/bookcover/book11.jpg';
+import Images from '../../../assets/bookcover/images';
+import book11 from '../../../assets/bookcover/book11.jpg';
 
 function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -138,17 +129,8 @@ const Home = () => {
                                 <Link to={`/detail/${book.id}`} key={book.id} className='link'>
                                     <div className='item-book'>
                                         <div>
-                                            {book.book_cover_photo === 'book1' && <img src={book1} alt="" />}
-                                            {book.book_cover_photo === 'book2' && <img src={book2} alt="" />}
-                                            {book.book_cover_photo === 'book3' && <img src={book3} alt="" />}
-                                            {book.book_cover_photo === 'book4' && <img src={book4} alt="" />}
-                                            {book.book_cover_photo === 'book5' && <img src={book5} alt="" />}
-                                            {book.book_cover_photo === 'book6' && <img src={book6} alt="" />}
-                                            {book.book_cover_photo === 'book7' && <img src={book7} alt="" />}
-                                            {book.book_cover_photo === 'book8' && <img src={book8} alt="" />}
-                                            {book.book_cover_photo === 'book9' && <img src={book9} alt="" />}
-                                            {book.book_cover_photo === 'book10' && <img src={book10} alt="" />}
                                             {book.book_cover_photo === null && <img src={book11} alt="" />}
+                                            {book.book_cover_photo !== null && <img src={Images[book.book_cover_photo]}></img>}
                                         </div>
                                         <div className='box-infor'>
                                             <div className='title-book'><span>{book.book_title}</span></div>
@@ -181,17 +163,8 @@ const Home = () => {
                             <Link to={`/detail/${book.id}`} key={book.id} className='link'>
                                 <div className='item-book'>
                                     <div>
-                                        {book.book_cover_photo === 'book1' && <img src={book1} alt="" />}
-                                        {book.book_cover_photo === 'book2' && <img src={book2} alt="" />}
-                                        {book.book_cover_photo === 'book3' && <img src={book3} alt="" />}
-                                        {book.book_cover_photo === 'book4' && <img src={book4} alt="" />}
-                                        {book.book_cover_photo === 'book5' && <img src={book5} alt="" />}
-                                        {book.book_cover_photo === 'book6' && <img src={book6} alt="" />}
-                                        {book.book_cover_photo === 'book7' && <img src={book7} alt="" />}
-                                        {book.book_cover_photo === 'book8' && <img src={book8} alt="" />}
-                                        {book.book_cover_photo === 'book9' && <img src={book9} alt="" />}
-                                        {book.book_cover_photo === 'book10' && <img src={book10} alt="" />}
                                         {book.book_cover_photo === null && <img src={book11} alt="" />}
+                                        {book.book_cover_photo !== null && <img src={Images[book.book_cover_photo]}></img>}
                                     </div>
                                     <div className='title-book'><span>{book.book_title}</span></div>
                                     <div className='name-author'><span>{book.author_name}</span></div>
@@ -204,7 +177,7 @@ const Home = () => {
                             </Link>
                         ))}
                     </Col>
-                   
+
                 </Row>
             </Container>
         </div>

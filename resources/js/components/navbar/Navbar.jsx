@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-grid-system';
-import { Form, Button, Modal, Alert } from 'react-bootstrap'
+import { Form, Button, Modal } from 'react-bootstrap'
 import swal from 'sweetalert';
 
 import axios from 'axios';
@@ -21,6 +21,7 @@ const Navbar = () => {
         const [email, setEmail] = useState("");
         const [password, setPassword] = useState("");
 
+
         const loginForm = (ev) => {
 
             ev.preventDefault();
@@ -33,10 +34,10 @@ const Navbar = () => {
                             password: password,
                         })
                         .then((response) => {
-                            localStorage.setItem('user', JSON.stringify(response.data));
-                            localStorage.setItem('token', JSON.stringify(response.data.token));
+                            localStorage.setItem('user', response.data);
+                            localStorage.setItem('token', response.data.token);
                             swal("Good job!", "Login Succesfully", "success");
-                            console.log('succes')
+                            setModalShow(false);
                         })
                         .catch(function (error) {
                             console.error(error);
@@ -46,7 +47,7 @@ const Navbar = () => {
         };
 
         return (
-                <Modal
+            <Modal
                 {...props}
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
@@ -63,7 +64,8 @@ const Navbar = () => {
                             setEmail(ev.target.value);
                         }}></input>
                         <input className='input' placeholder='Password' value={password} onChange={(ev) => {
-                            setPassword(ev.target.value);}}></input>
+                            setPassword(ev.target.value);
+                        }}></input>
                         <Button className='btn-login' variant="primary" type='submit'>Login</Button>
                         <Button className='btn-cancel' onClick={props.onHide}>Cancel</Button>
                     </Modal.Body>
@@ -73,6 +75,30 @@ const Navbar = () => {
             </Modal>
 
         );
+
+    }
+
+    const logout = () => {
+        axios.post(`${API}/logout`)
+            .then(() => {
+                localStorage.removeItem('user');
+                localStorage.removeItem('token');
+                window.location.reload();
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+    }
+
+    var checkToken = '';
+    if (!localStorage.getItem('token')) {
+        checkToken = (
+            <Link className='nav-btn' variant="primary" onClick={() => setModalShow(true)}>SIGN IN</Link>
+        )
+    } else {
+        checkToken = (
+            <Link className='nav-btn' onClick={logout}>LOG OUT</Link>
+        )
     }
 
     return (
@@ -94,7 +120,8 @@ const Navbar = () => {
                         <NavLink className='nav-btn' to={'/shop'}>SHOP</NavLink>
                         <NavLink className='nav-btn' to={'/cart'}>CART</NavLink>
                         <NavLink className='nav-btn' to={'/about'}>ABOUT</NavLink>
-                        <Link className='nav-btn' variant="primary" onClick={() => setModalShow(true)}>SIGN IN</Link>
+                        {checkToken}
+
                     </div>
                 </Col>
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\AuthorController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Api\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 });
 
 Route::post('/login', [LoginController::class, 'login']);
+Route::post('/addToCart', [OrderController::class, 'addToCart']);
 
 Route::get('/books', [BookController::class, 'index']);
 Route::get('/books/{id}', [BookController::class, 'show']);

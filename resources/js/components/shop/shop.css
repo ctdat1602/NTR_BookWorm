@@ -86,10 +86,11 @@
     text-align: center;
 }
 
-
-.shop-filter-name:hover {
+.shop-filter-name:hover, .shop-filter-name p:hover {
+    color: white;
+    font-weight: bold;
     background-color: #1890ff;
-    padding-left: 20px;
+    padding-left: 10px;
     border-radius: 5px;
 }
 

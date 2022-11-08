@@ -8,17 +8,9 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { Pagination } from 'antd';
 
-import book1 from '../../../../resources/assets/bookcover/book1.jpg';
-import book2 from '../../../../resources/assets/bookcover/book2.jpg';
-import book3 from '../../../../resources/assets/bookcover/book3.jpg';
-import book4 from '../../../../resources/assets/bookcover/book4.jpg';
-import book5 from '../../../../resources/assets/bookcover/book5.jpg';
-import book6 from '../../../../resources/assets/bookcover/book6.jpg';
-import book7 from '../../../../resources/assets/bookcover/book7.jpg';
-import book8 from '../../../../resources/assets/bookcover/book8.jpg';
-import book9 from '../../../../resources/assets/bookcover/book9.jpg';
-import book10 from '../../../../resources/assets/bookcover/book10.jpg';
-import book11 from '../../../../resources/assets/bookcover/book11.jpg';
+import Images from '../../../assets/bookcover/images';
+import book11 from '../../../assets/bookcover/book11.jpg';
+
 
 const Detail = () => {
 
@@ -86,6 +78,18 @@ const Detail = () => {
     setQuantity(count => count + 1);
   }
 
+  const addToCart = (e) => {
+    const data = {
+      book_id: bookDetail.id,
+      book_qty: quantity,
+    }
+
+    axios.post(`${API}/addToCart`, data).then(res => {
+         console.log("success add to cart");
+      
+    })
+  }
+
   return (
     <Container style={{ padding: 50, paddingTop: 0 }} fluid>
       <Row className='title' style={{ padding: 0 }}>
@@ -95,18 +99,8 @@ const Detail = () => {
         <Col xl={9} style={{ padding: 0 }}>
           <div className='item-card'>
             <div>
-              {bookDetail.book_cover_photo === 'book1' && <img src={book1} alt="" />}
-              {bookDetail.book_cover_photo === 'book2' && <img src={book2} alt="" />}
-              {bookDetail.book_cover_photo === 'book3' && <img src={book3} alt="" />}
-              {bookDetail.book_cover_photo === 'book4' && <img src={book4} alt="" />}
-              {bookDetail.book_cover_photo === 'book5' && <img src={book5} alt="" />}
-              {bookDetail.book_cover_photo === 'book6' && <img src={book6} alt="" />}
-              {bookDetail.book_cover_photo === 'book7' && <img src={book7} alt="" />}
-              {bookDetail.book_cover_photo === 'book8' && <img src={book8} alt="" />}
-              {bookDetail.book_cover_photo === 'book9' && <img src={book9} alt="" />}
-              {bookDetail.book_cover_photo === 'book10' && <img src={book10} alt="" />}
               {bookDetail.book_cover_photo === null && <img src={book11} alt="" />}
-              <div className='book-author'><span>Author: {bookDetail.author_name}</span></div>
+              {bookDetail.book_cover_photo !== null && <img src={Images[bookDetail.book_cover_photo]}/>}
             </div>
             <div className='infor-card'>
               <div className='book-name'><span>{bookDetail.book_title}</span></div>
@@ -131,7 +125,7 @@ const Detail = () => {
 
           <div>
             <Link>
-              <p className='add-to-cart'>ADD TO CART</p>
+              <p className='add-to-cart' onClick={addToCart}>ADD TO CART</p>
             </Link>
           </div>
         </Col>
@@ -197,22 +191,22 @@ const Detail = () => {
             <div>
               <span className='review-title'>Write a Reviews</span>
             </div>
-            <div style={{marginTop: 20}}>
+            <div style={{ marginTop: 20 }}>
               <span className='title-write-review'>Add a tittle</span>
               <input className='input'></input>
             </div>
 
-            <div style={{marginTop: 20}}>
+            <div style={{ marginTop: 20 }}>
               <span className='title-write-review'>Details please! Your review helps other shoppers.</span>
               <textarea className='text-area'></textarea>
             </div>
 
-            <div style={{marginTop: 20}}>
+            <div style={{ marginTop: 20 }}>
               <span className='title-write-review'>Select a rating start</span>
               <input className='input' type='number' min={1} max={5}></input>
             </div>
 
-            <div style={{marginTop: 20}}>
+            <div style={{ marginTop: 20 }}>
               <Link>
                 <p className='up-review'>SUBMIT REVIEW</p>
               </Link>

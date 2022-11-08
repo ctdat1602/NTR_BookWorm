@@ -12,22 +12,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './shop.css'
 
-import book1 from '../../../../resources/assets/bookcover/book1.jpg';
-import book2 from '../../../../resources/assets/bookcover/book2.jpg';
-import book3 from '../../../../resources/assets/bookcover/book3.jpg';
-import book4 from '../../../../resources/assets/bookcover/book4.jpg';
-import book5 from '../../../../resources/assets/bookcover/book5.jpg';
-import book6 from '../../../../resources/assets/bookcover/book6.jpg';
-import book7 from '../../../../resources/assets/bookcover/book7.jpg';
-import book8 from '../../../../resources/assets/bookcover/book8.jpg';
-import book9 from '../../../../resources/assets/bookcover/book9.jpg';
-import book10 from '../../../../resources/assets/bookcover/book10.jpg';
-import book11 from '../../../../resources/assets/bookcover/book11.jpg';
-import DropdownItem from 'react-bootstrap/esm/DropdownItem';
+import Images from '../../../assets/bookcover/images';
+import book11 from '../../../assets/bookcover/book11.jpg';
 
 const { Panel } = Collapse;
-
-
 
 const Shop = () => {
 
@@ -169,12 +157,12 @@ const Shop = () => {
 
                         <Collapse className='box-collapse'>
                             <Panel header="Rating Review" key="3">
-                                <div className="shop-filter-name">
-                                    <p>1 Start</p>
-                                    <p>2 Start</p>
-                                    <p>3 Start</p>
-                                    <p>4 Start</p>
-                                    <p>5 Start</p>
+                                <div>
+                                    <p className="shop-filter-name">1 Start</p>
+                                    <p className="shop-filter-name">2 Start</p>
+                                    <p className="shop-filter-name">3 Start</p>
+                                    <p className="shop-filter-name">4 Start</p>
+                                    <p className="shop-filter-name">5 Start</p>
                                 </div>
                             </Panel>
                         </Collapse>
@@ -201,17 +189,8 @@ const Shop = () => {
                                 <Link to={`/detail/${book.id}`} key={book.id}>
                                     <div className='item-book'>
                                         <div>
-                                            {book.book_cover_photo === 'book1' && <img src={book1} alt="" />}
-                                            {book.book_cover_photo === 'book2' && <img src={book2} alt="" />}
-                                            {book.book_cover_photo === 'book3' && <img src={book3} alt="" />}
-                                            {book.book_cover_photo === 'book4' && <img src={book4} alt="" />}
-                                            {book.book_cover_photo === 'book5' && <img src={book5} alt="" />}
-                                            {book.book_cover_photo === 'book6' && <img src={book6} alt="" />}
-                                            {book.book_cover_photo === 'book7' && <img src={book7} alt="" />}
-                                            {book.book_cover_photo === 'book8' && <img src={book8} alt="" />}
-                                            {book.book_cover_photo === 'book9' && <img src={book9} alt="" />}
-                                            {book.book_cover_photo === 'book10' && <img src={book10} alt="" />}
                                             {book.book_cover_photo === null && <img src={book11} alt="" />}
+                                            {book.book_cover_photo !== null && <img src={Images[book.book_cover_photo]}></img>}
                                         </div>
                                         <div style={{ padding: 20 }}>
                                             <div className='title-book'><span>{book.book_title}</span></div>
