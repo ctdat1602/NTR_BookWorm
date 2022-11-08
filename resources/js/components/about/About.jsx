@@ -4,7 +4,7 @@ import './about.css'
 
 const About = () => {
     return (
-        <Container>
+        <Container style={{height: 648}}>
             <Row style={{ marginTop: 30, paddingLeft: 20 }}>
                 <Col>
                     <h1>About Us</h1>

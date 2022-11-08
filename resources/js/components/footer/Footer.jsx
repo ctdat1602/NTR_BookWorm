@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <Container fluid style={{ padding: 0, bottom: 0, position: 'relative', left: 0,}} className='container-footer'>
             <Row style={{ margin: 0}}>
-                <Col style={{ paddingTop: 70, paddingLeft: 50, display: 'flex'}}>
+                <Col style={{ paddingTop: 45, paddingLeft: 50, display: 'flex'}}>
                 <img src={logo} style={{width: 70, height: 70, marginRight: 30}}></img>
                 <div>
                     <p style={{margin: 0, fontSize: 20, fontWeight: 'bold'}}>BOOKWORM</p>
